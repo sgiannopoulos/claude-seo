@@ -222,7 +222,8 @@ Cross-reference on-page images with the image results visible in the Google SERP
 - **Format distribution**: WebP vs JPEG vs PNG in top results
 - **Opportunity score**: keywords where you have page rankings but no image presence
 
-If DataForSEO MCP is not available, inform user and suggest installing the extension.
+If DataForSEO MCP is not available, report that live image SERP data is unavailable
+and continue with the image evidence already collected.
 
 ---
 

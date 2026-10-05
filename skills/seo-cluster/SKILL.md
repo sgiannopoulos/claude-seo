@@ -226,8 +226,7 @@ Test: Does ~/.claude/skills/blog/SKILL.md exist?
    - Key points to cover
    - Competing pages to differentiate from
 3. Write briefs to `cluster-briefs/` directory as individual markdown files
-4. Inform user: "Install [claude-blog](https://github.com/AgriciDaniel/claude-blog)
-   to auto-create content. Briefs saved to `cluster-briefs/`."
+4. Inform user: "Content briefs saved to `cluster-briefs/`."
 
 ---
 
@@ -298,7 +297,7 @@ After cluster planning or execution completes, offer:
 | "SERP data unavailable" | WebSearch and DataForSEO both failing | Retry after 30s; if persistent, use intent-only clustering with warning |
 | "No strategy file found" | `--from strategy` but no plan exists | Prompt user to run `/seo plan` first |
 | "cluster-plan.json not found" | Execute without planning | Prompt user to run `/seo cluster plan` first |
-| "claude-blog not installed" | Execute attempted without blog skill | Generate content briefs instead; suggest installation |
+| "claude-blog not installed" | Execute attempted without blog skill | Generate content briefs instead |
 | "DataForSEO budget exceeded" | Cost check returned "blocked" | Fall back to WebSearch; inform user |
 | "Duplicate primary keywords" | Cannibalization detected | Merge affected posts or reassign keywords |
 | "Orphan page detected" | Post missing incoming links | Add links from nearest cluster siblings |

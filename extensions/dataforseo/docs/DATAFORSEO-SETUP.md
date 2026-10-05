@@ -8,8 +8,6 @@ Step-by-step guide to getting DataForSEO API credentials for the Claude SEO exte
 2. Sign up with your email address
 3. Verify your email
 
-New accounts include a free trial balance for testing.
-
 ## 2. Find API Credentials
 
 1. Log in to [app.dataforseo.com](https://app.dataforseo.com)

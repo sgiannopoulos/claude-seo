@@ -11,8 +11,8 @@
 For plugin installs, verify and reinstall through Claude Code:
 ```bash
 /plugin list
-/plugin marketplace add AgriciDaniel/claude-seo
-/plugin install claude-seo@agricidaniel-claude-seo
+/plugin marketplace add sgiannopoulos/claude-seo
+/plugin install claude-seo@sgiannopoulos-claude-seo
 ```
 
 For manual installs:
@@ -38,7 +38,7 @@ claude
 Caution: Prefer downloading, inspecting, then running remote scripts; the pipe-to-shell form below is the less-safe convenience option.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sgiannopoulos/claude-seo/main/install.sh | bash
 ```
 
 ---
@@ -71,7 +71,7 @@ Do not install individual packages, use `pip --user`, or create a PATH shim.
 **Solution:** For plugin installs, reinstall the plugin first:
 
 ```bash
-/plugin install claude-seo@agricidaniel-claude-seo
+/plugin install claude-seo@sgiannopoulos-claude-seo
 ```
 
 For manual installs, requirements.txt is copied to the skill directory:
@@ -82,7 +82,7 @@ ls ~/.claude/skills/seo/requirements.txt
 
 If missing, download it directly:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/requirements.txt \
+curl -fsSL https://raw.githubusercontent.com/sgiannopoulos/claude-seo/main/requirements.txt \
   -o ~/.claude/skills/seo/requirements.txt
 ```
 
@@ -130,7 +130,7 @@ chmod +x ~/.claude/skills/seo/scripts/*.py
 
 **Solution:**
 
-For plugin installs, check `/plugin list` and reinstall `claude-seo@agricidaniel-claude-seo`; subagents load from the plugin, not `~/.claude/agents/`.
+For plugin installs, check `/plugin list` and reinstall `claude-seo@sgiannopoulos-claude-seo`; subagents load from the plugin, not `~/.claude/agents/`.
 
 For manual installs:
 

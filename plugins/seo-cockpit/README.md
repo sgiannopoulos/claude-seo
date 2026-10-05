@@ -76,12 +76,12 @@ Charts are drawn with block characters in the terminal and as SVG on the desktop
 ## Install
 
 ```bash
-/plugin marketplace add AgriciDaniel/claude-seo
-/plugin install claude-seo@agricidaniel-claude-seo
-/plugin install seo-cockpit@agricidaniel-claude-seo
+/plugin marketplace add sgiannopoulos/claude-seo
+/plugin install claude-seo@sgiannopoulos-claude-seo
+/plugin install seo-cockpit@sgiannopoulos-claude-seo
 ```
 
-Auto-update is off by default for third-party marketplaces. Run `claude plugin update seo-cockpit@agricidaniel-claude-seo` to update.
+Auto-update is off by default for third-party marketplaces. Run `claude plugin update seo-cockpit@sgiannopoulos-claude-seo` to update.
 
 ## Settings (`/config`)
 

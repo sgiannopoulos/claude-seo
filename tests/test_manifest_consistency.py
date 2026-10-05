@@ -155,18 +155,13 @@ def test_pyproject_version_matches_plugin_json():
     )
 
 
-def test_install_scripts_default_tag_matches_plugin_version():
-    """install.sh and install.ps1 default REPO_TAG must equal v{plugin version}.
-
-    Background: install.sh and install.ps1 default tag was v1.9.0 while
-    plugin.json shipped at 1.9.8 (4 missed bumps across v1.9.5/.6/.7/.8).
-    Manual-install users via curl | bash got 8 versions stale. This guard
-    forces the default tag to track plugin.json on every release.
-    """
+def test_install_scripts_default_ref_uses_cleaned_fork():
+    """Manual installs fetch cleaned main from this fork rather than upstream tags."""
     plugin = json.loads(PLUGIN_JSON.read_text(encoding="utf-8"))
-    expected_tag = f"v{plugin['version']}"
+    expected_tag = "main"
 
     sh_text = (REPO_ROOT / "install.sh").read_text(encoding="utf-8")
+    assert 'REPO_URL="https://github.com/sgiannopoulos/claude-seo"' in sh_text
     sh_match = re.search(
         r'REPO_TAG="\$\{CLAUDE_SEO_TAG:-([^}]+)\}"', sh_text
     )
@@ -175,17 +170,18 @@ def test_install_scripts_default_tag_matches_plugin_version():
     assert sh_tag == expected_tag, (
         f"install.sh default tag is {sh_tag} but plugin.json is at "
         f"version {plugin['version']} (expected {expected_tag}). "
-        f"Bump install.sh's CLAUDE_SEO_TAG default on every release."
+        f"Keep install.sh on the cleaned fork's main branch."
     )
 
     ps_text = (REPO_ROOT / "install.ps1").read_text(encoding="utf-8")
+    assert '$RepoUrl = "https://github.com/sgiannopoulos/claude-seo"' in ps_text
     ps_match = re.search(r"else\s*\{\s*'([^']+)'\s*\}", ps_text)
     assert ps_match, "install.ps1 has no recognizable RepoTag default"
     ps_tag = ps_match.group(1)
     assert ps_tag == expected_tag, (
         f"install.ps1 default tag is {ps_tag} but plugin.json is at "
         f"version {plugin['version']} (expected {expected_tag}). "
-        f"Bump install.ps1's RepoTag default on every release."
+        f"Keep install.ps1 on the cleaned fork's main branch."
     )
 
 

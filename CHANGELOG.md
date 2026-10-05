@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed in this fork
+
+- Remove the mandatory community footer and unrelated product installation pitches.
+- Remove membership promotions, funding links, marketing comparisons, and report signatures.
+- Point plugin distribution, installers, and installation docs to `sgiannopoulos/claude-seo`; manual installs default to the cleaned `main` branch.
+- Retain original licenses, contributor attribution, source citations, and optional integrations.
+
 ## [2.4.2] - 2026-10-04
 
 seo-cockpit, Google sign-in through your own account, and a schema-hook fix.

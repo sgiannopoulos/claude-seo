@@ -7,7 +7,7 @@ banana Creative Director pipeline.
 ## Prerequisites
 
 > This extension wraps [Claude Banana](https://github.com/AgriciDaniel/banana-claude)
-> for SEO-specific use cases. Install the standalone skill for general-purpose image generation.
+> for SEO-specific use cases.
 
 - **Claude SEO** installed (`~/.claude/skills/seo/`)
 - **Node.js 20+** with npx

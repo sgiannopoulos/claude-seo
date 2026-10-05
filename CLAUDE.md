@@ -19,7 +19,7 @@ as an optional extension for self-hosted analytics.
 ```
 claude-seo/
   CLAUDE.md                          # Project instructions (this file)
-  CONTRIBUTORS.md                    # Community credits (Pro Hub Challenge)
+  CONTRIBUTORS.md                    # Contributor credits
   AGENTS.md                          # Multi-platform agent instructions (Cursor, Antigravity)
   .claude-plugin/
     plugin.json                    # Plugin manifest (v2.4.2)
@@ -235,13 +235,6 @@ claude-seo/
 - **Cross-skill enforcement**: After completing ANY analysis command (audit, page, technical, content, schema, geo, local, maps), offer: "Generate a PDF report? Use `/seo google report`"
 - **Google logo** appears on title page when using Google API data ("Powered by Google APIs")
 
-## Ecosystem
-
-Part of the Claude Code skill family:
-- [Claude Banana](https://github.com/AgriciDaniel/banana-claude) -- standalone image gen (bundled as extension here)
-- [Claude Blog](https://github.com/AgriciDaniel/claude-blog) -- companion blog engine, consumes SEO findings
-- [AI Marketing Claude](https://github.com/zubair-trabzada/ai-marketing-claude) -- community marketing suite (copy, emails, ads, funnels, CRO)
-
 ## Key Principles
 
 1. **Progressive Disclosure**: Metadata always loaded, instructions on activation, resources on demand
@@ -249,66 +242,10 @@ Part of the Claude Code skill family:
 3. **Parallel Execution**: Full audits spawn up to 17 subagents simultaneously
 4. **Extension System**: DataForSEO, Firecrawl, Banana, Ahrefs, SE Ranking, Profound, Bing Webmaster, and Unlighthouse extensions
 
-## Repository Topology (public + private)
+## Fork maintenance
 
-This project is mirrored across two GitHub remotes with shared historical
-ancestry. Reviewed back-ports, private-only research, and marketplace branding
-mean their release commits can have different SHAs. Neither repository is a
-GitHub fork of the other.
-
-| Remote | URL | Visibility | Role |
-|---|---|---|---|
-| `origin` | `https://github.com/AgriciDaniel/claude-seo` | **Public** | Published distribution. Users discover, clone, and install from here. `main` only reflects released history. |
-| `aimh` | `https://github.com/AI-Marketing-Hub/claude-seo` | **Private** | Working repo inside the AI Marketing Hub org. Daily development. v2 branch + post-release work lives here before promotion to public. |
-
-### Workflow
-
-Daily development:
-- Work on `v2` (or feature branches off `v2`) locally.
-- `git push aimh <branch>` to publish work-in-progress to the private repo
-  (Dependabot, Actions, and CI run there).
-
-Promoting reviewed release changes:
-1. Use an isolated clean worktree from the target repository branch.
-2. Fast-forward only when ancestry proves it is safe. Otherwise cherry-pick
-   the exact reviewed commits with `-x` and resolve only documented divergence.
-3. Run the full validation suite and compare the private/public release trees.
-4. Create an annotated repository-specific tag after validation.
-5. Push private changes first. Push public changes only with explicit release
-   authorization, with the public tag available before the installer moves.
-6. Create the GitHub Release and release post on the public repository only.
-
-### Safety rules
-
-- **Never push to `origin/main` autonomously.** The public is release-only;
-  pushes are user-authorized per-release.
-- **`aimh` accepts day-to-day pushes.** No release-gate ceremony required
-  for the private remote.
-- **v2.2.5 is tagged on both repositories.** Each tag points to that
-  repository's reviewed release commit.
-- **Never force-sync the histories.** Preserve reviewed divergence and never
-  rewrite either remote without explicit per-operation authorization.
-
-### Verifying the topology
-
-```bash
-# Both remotes configured
-git remote -v        # expects: origin (public) + aimh (private)
-
-# Compare heads and then audit the documented divergence. Equal SHAs are not
-# expected after repository-specific back-ports.
-git ls-remote --heads aimh main
-git ls-remote --heads origin main
-```
-
-Full workflow reference: `docs/WORKFLOW-public-private.md`.
-
-## Release Blog Post
-
-After cutting a new release (git tag + `gh release create`), run:
-
-```
-/release-blog
-```
-
-This generates a blog post on https://claude-seo.md/blog/, handles cover image generation, SEO metadata, FAQ schema, internal linking, sitemap/llms.txt updates, Vercel deployment, and Google indexing.
+This fork is maintained at https://github.com/sgiannopoulos/claude-seo.
+Its source is https://github.com/AgriciDaniel/claude-seo.
+Keep reports focused on the requested SEO analysis and actionable findings.
+Manual installers use the fork's `main` branch, with `CLAUDE_SEO_TAG` available
+to select another ref. Preserve copyright, license, and contributor attribution.

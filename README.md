@@ -4,32 +4,20 @@
 
 **Claude SEO is an open-source SEO analysis plugin for [Claude Code](https://claude.ai/claude-code).** It runs 26 sub-skills and 19 specialist agents in parallel across technical SEO, content quality (E-E-A-T), Schema.org markup, AI search optimization (GEO), local SEO, e-commerce, and international SEO. Every audit produces a prioritized action plan with testable recommendations grounded in primary-source guidance from Google.
 
-[![CI](https://github.com/AgriciDaniel/claude-seo/actions/workflows/ci.yml/badge.svg)](https://github.com/AgriciDaniel/claude-seo/actions/workflows/ci.yml)
+[![CI](https://github.com/sgiannopoulos/claude-seo/actions/workflows/ci.yml/badge.svg)](https://github.com/sgiannopoulos/claude-seo/actions/workflows/ci.yml)
 [![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-blue)](https://claude.ai/claude-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/AgriciDaniel/claude-seo)](https://github.com/AgriciDaniel/claude-seo/releases)
 [![Tests](https://img.shields.io/badge/tests-410%20passing-brightgreen)](tests/)
-[![Community](https://img.shields.io/badge/AI%20Marketing%20Hub-Pro%20community-purple)](https://www.skool.com/ai-marketing-hub-pro)
 
-> **Two versions of this skill.**
-> - 🌐 **Public open-source** → [`AgriciDaniel/claude-seo`](https://github.com/AgriciDaniel/claude-seo): MIT, public releases, no membership. Use this if you want stable + downloadable.
-> - 🔒 **Community private mirror** → [`AI-Marketing-Hub/claude-seo`](https://github.com/AI-Marketing-Hub/claude-seo): early access to upcoming features and direct collaboration with the [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro) community. Requires membership.
+> This fork removes promotional report footers, community upsells, and unrelated product pitches.
+> Original copyright and license notices, contributor credits, and functional integrations are retained.
+> Manual installers use this fork's `main` branch; set `CLAUDE_SEO_TAG` to choose another ref.
 
-### Why Claude SEO
+### Analysis approach
 
 - **AI-search first.** Aligned with [Google's AI Optimization Guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). Question-based citability scoring, primary-source evidence on llms.txt, IPTC `TrainedAlgorithmicMedia` for AI-generated product images, agent-friendly page checks per [web.dev](https://web.dev/), and `/seo agentic` for agent readiness scored the way Lighthouse's Agentic Browsing category counts it.
-- **Parallel execution.** Full site audits spawn up to 17 specialist agents simultaneously. Site-level audits complete in minutes rather than hours.
-- **Falsifiable, not promotional.** Every recommendation carries the first-principle observation it rests on, its dependency relationships, an explicit "how would we know this failed?" check, and a leading indicator. See [Methodology](#methodology).
-
-### Real results
-
-![Google Search Console clicks and impressions for a three-month-old site climbing from launch to steady organic growth between 23 March and 12 June 2026](assets/growth-3-months.png)
-
-## Who this is for
-
-- **SEO agencies running 5+ client sites.** Replace quarterly deep audits with weekly automated runs. Same team capacity, 4× audit cadence, every recommendation comes with a falsifiability check the client can verify.
-- **In-house SEO leads at SaaS / publisher / e-commerce companies.** Second-pair-of-eyes before executive reviews. Catches what GSC and Lighthouse hide: schema deprecation, AI-citability gaps, expired-domain heritage risk, parasite-SEO exposure, machine-translation drift.
-- **Freelance SEO consultants.** Anchor day-one client scope with a 15-minute audit and a real 0-100 score. Win the engagement with concrete proof of value before you spend an hour writing the proposal.
+- **Parallel execution.** Full site audits spawn up to 17 specialist agents simultaneously. Audit duration depends on site size, available data, and configured tools.
+- **Testable recommendations.** Every recommendation carries the first-principle observation it rests on, its dependency relationships, an explicit "how would we know this failed?" check, and a leading indicator. See [Methodology](#methodology).
 
 ![Claude SEO /seo command demo in Claude Code terminal](screenshots/seo-command-demo.gif)
 
@@ -37,17 +25,12 @@ Run a full audit and watch parallel agents fan out across the site:
 
 ![Claude SEO /seo audit demo: parallel subagents producing a prioritized action plan](screenshots/seo-audit-demo.gif)
 
-[Watch the full demo on YouTube](https://www.youtube.com/watch?v=COMnNlUakQk)
-
 ## Table of Contents
 
-- [Who this is for](#who-this-is-for)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Commands](#commands)
 - [Features](#features)
-- [Compared to manual / agency / commercial tools](#compared-to-manual--agency--commercial-tools)
-- [Use cases](#use-cases)
 - [Sample Output](#sample-output)
 - [Architecture](#architecture)
 - [Methodology](#methodology)
@@ -56,27 +39,21 @@ Run a full audit and watch parallel agents fan out across the site:
 - [Requirements](#requirements)
 - [Uninstall](#uninstall)
 - [Extensions](#extensions)
-- [Ecosystem](#ecosystem)
 - [Documentation](#documentation)
 - [FAQ](#faq)
 - [License](#license)
 - [Contributing](#contributing)
-- [Author](#author)
+- [Attribution](#attribution)
 
 ## Installation
-
-> ℹ️ **Which version are you installing?**
->
-> - **Public open-source (default).** The commands below install from [`AgriciDaniel/claude-seo`](https://github.com/AgriciDaniel/claude-seo): MIT, public releases, no membership required.
-> - **AI Marketing Hub Pro member?** Install the community version with early access instead: swap `AgriciDaniel/claude-seo` for `AI-Marketing-Hub/claude-seo` and the plugin slug `claude-seo@agricidaniel-claude-seo` for `claude-seo@ai-marketing-hub-claude-seo`. Requires `gh auth login` (or PAT) with access to the `AI-Marketing-Hub` org. If `/plugin marketplace add` 404s, DM in the [Skool community](https://www.skool.com/ai-marketing-hub-pro) to get added.
 
 ### Plugin Install (Claude Code 1.0.33+)
 
 The fastest path. One-time marketplace add, then plugin install:
 
 ```bash
-/plugin marketplace add AgriciDaniel/claude-seo
-/plugin install claude-seo@agricidaniel-claude-seo
+/plugin marketplace add sgiannopoulos/claude-seo
+/plugin install claude-seo@sgiannopoulos-claude-seo
 /seo setup
 ```
 
@@ -87,7 +64,7 @@ with `/seo doctor`. No global Python packages or PATH shims are created.
 ### Manual Install (Unix / macOS / Linux)
 
 ```bash
-git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git
+git clone --depth 1 https://github.com/sgiannopoulos/claude-seo.git
 bash claude-seo/install.sh
 ```
 
@@ -95,7 +72,7 @@ bash claude-seo/install.sh
 <summary>One-liner (curl, review then run)</summary>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/install.sh > install.sh
+curl -fsSL https://raw.githubusercontent.com/sgiannopoulos/claude-seo/main/install.sh > install.sh
 cat install.sh        # review before running
 bash install.sh
 rm install.sh
@@ -106,7 +83,7 @@ rm install.sh
 ### Windows (PowerShell)
 
 ```powershell
-git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git
+git clone --depth 1 https://github.com/sgiannopoulos/claude-seo.git
 powershell -ExecutionPolicy Bypass -File claude-seo\install.ps1
 ```
 
@@ -210,41 +187,17 @@ PDF reports are generated via [WeasyPrint](https://weasyprint.org/) (A4 layout) 
 
 Three layers. **Google Business Profile signals**: categories, hours, photos, posts, products, attributes. **NAP consistency** across citations: name, address, phone matched against major directories with deviation flagging. **Review intelligence**: rating trends, sentiment, response coverage. For multi-location businesses, Claude SEO enforces a 30-page warning threshold and a 50-page hard stop to prevent doorway-page violations (configurable). The `/seo maps` workflow adds geo-grid rank tracking, GBP profile auditing, and competitor radius mapping. Local schema generation covers `LocalBusiness` with all required and recommended properties (geo coordinates, opening hours, areaServed). v2 added a GBP deprecation linter that detects retired chat-field references and `.business.site` URLs.
 
-## Compared to manual / agency / commercial tools
-
-| | Manual audit | Agency engagement | Commercial SEO audit tool | **Claude SEO** |
-|---|---|---|---|---|
-| **Time per audit** | 4-8 hrs senior SEO time | 1-3 weeks turnaround | 10-45 min crawl + report | **10-15 min** |
-| **Cost** | High (billable hours) | $2k-$15k+ project | $99-$999/mo subscription | **Free skill + Claude Code subscription** |
-| **Repeatable** | Inconsistent across analysts | Inconsistent across engagements | Yes | **Yes, deterministic + scriptable** |
-| **Output format** | Wall-of-findings PDF | Branded slide deck | Web dashboard, CSV exports | **Markdown + PDF + JSON, local files** |
-| **Custom benchmarks** | Manual per analyst | Agency-specific frameworks | Vendor-fixed | **Edit local SKILL.md** |
-| **Data leaves machine?** | No (your spreadsheet) | Yes (sent to agency) | Yes (uploaded to vendor) | **No, fully local by default** |
-| **Lock-in** | None | High | High (data-exit friction) | **None. MIT, your files.** |
-| **AI search awareness** | Depends on analyst | Depends on agency seniority | Lagging (typically 6-12 mo behind) | **Google AI Optimization Guide (May 2026), Sept 2025 QRG, INP-not-FID, GEO/AEO=SEO reframe, llms.txt evidence-based posture** |
-| **Falsifiability per finding** | No | No | No | **Yes. Every recommendation carries a "how would we know this failed?" check + leading indicator** |
-
-> Cost benchmarks: manual audit assumes a senior SEO consultant at typical agency billable rates; agency engagement based on common discovery/audit deliverable scopes; commercial-tool subscriptions reflect published mid-tier pricing across the SEO audit tool category. Your numbers may differ.
-
-## Use cases
-
-**SEO agency lead running 10 client sites.** Replaces the quarterly "deep audit" ritual with a weekly Monday-morning `/seo audit` run per site. Time to deliver a client health-score email drops from 4 hours to 12 minutes; coverage goes from quarterly to weekly without billing more hours. The drift baseline catches regressions between audits so the client conversation moves from "look at this snapshot" to "here is what changed this week."
-
-**In-house SEO lead at a 50-person SaaS company.** Runs `/seo audit` 24 hours before each quarterly business review. Catches the items the platform UI buries (broken canonical chains on programmatic pages, schema deprecation after Google's June 2025 retirement wave, AI-citability gaps that erode SERP-to-AI-Overview pickup, expired-domain heritage on acquired blog assets) before the CMO asks why organic traffic is down in front of the board.
-
-**Freelance SEO consultant onboarding a new client.** Runs `/seo audit` on the discovery call. Anchors the engagement scope with a real 0-100 score, 3 prioritized critical findings, and a falsifiability check on each recommendation, instead of a vague "I'll take a look and get back to you." Closes more retainers because the proof of value happens during the call, not after the proposal.
-
 ## Sample Output
 
-Claude SEO writes real markdown reports as its primary deliverable. Below is the first ~50 lines of a `/seo schema https://rankenstein.pro/about` audit verbatim. The actual structure, headers, and grading format the plugin produces follows.
+Claude SEO writes real markdown reports as its primary deliverable. The following illustrative schema report shows the output structure, headers, and grading format.
 
 <details>
-<summary><code>SCHEMA-REPORT.md</code>: first 50 lines of a real audit</summary>
+<summary><code>SCHEMA-REPORT.md</code>: illustrative schema audit</summary>
 
 ```markdown
-# Schema Markup Report: rankenstein.pro/about
+# Schema Markup Report: example.com/about
 
-**URL:** https://rankenstein.pro/about
+**URL:** https://example.com/about
 **Date:** 2026-02-09
 **Format Detected:** JSON-LD (3 blocks) | No Microdata | No RDFa
 
@@ -271,19 +224,19 @@ Claude SEO writes real markdown reports as its primary deliverable. Below is the
 |----------|-------|--------|-------|
 | `@context` | https://schema.org | Valid | |
 | `@type` | Organization | Valid | Active type |
-| `@id` | https://rankenstein.pro#organization | Good | Enables cross-referencing |
-| `name` | Rankenstein | Valid | |
+| `@id` | https://example.com#organization | Good | Enables cross-referencing |
+| `name` | Example Company | Valid | |
 | `description` | Present, 200+ chars | Good | Descriptive and keyword-rich |
-| `url` | https://rankenstein.pro | Valid | Absolute URL |
+| `url` | https://example.com | Valid | Absolute URL |
 | `logo` | ImageObject with @id, url, width, height, caption | Excellent | Well-structured |
 | `foundingDate` | "2024" | Imprecise | Year-only accepted but ISO 8601 preferred |
 | `areaServed` | "Worldwide" | Text | Works but `GeoShape` is more semantic |
 | `contactPoint` | email + contactType | Valid | Consider adding `telephone` |
-| `founder` | 1 Person (Daniel Agrici) | Incomplete | Page describes two co-founders; second missing |
+| `founder` | 1 Person (Alex Morgan) | Incomplete | Page describes two co-founders; second missing |
 | `sameAs` | 5 social profiles | Good | GitHub, X, LinkedIn, YouTube, Reddit |
 | `knowsAbout` | 6 topics | Good | Relevant topical signals |
 
-**Critical Issue:** The `founder` property only includes Daniel Agrici. Benjamin Samar (Co-Founder & Technical Director) is displayed on the page but absent from the schema. This creates a content-schema mismatch that can confuse search engines.
+**Critical Issue:** The `founder` property only includes Alex Morgan. Taylor Reed (Co-Founder & Technical Director) is displayed on the page but absent from the schema. This creates a content-schema mismatch that can confuse search engines.
 ```
 
 </details>
@@ -351,7 +304,7 @@ a model, edit the `model:` line in the agent's frontmatter under `agents/`.
 ## Uninstall
 
 ```bash
-git clone --depth 1 https://github.com/AgriciDaniel/claude-seo.git
+git clone --depth 1 https://github.com/sgiannopoulos/claude-seo.git
 bash claude-seo/uninstall.sh
 ```
 
@@ -359,7 +312,7 @@ bash claude-seo/uninstall.sh
 <summary>One-liner (curl)</summary>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sgiannopoulos/claude-seo/main/uninstall.sh | bash
 ```
 
 </details>
@@ -390,27 +343,6 @@ Added in v2:
 
 Setup walkthroughs live under `extensions/<name>/docs/`; integration notes: [docs/MCP-INTEGRATION.md](docs/MCP-INTEGRATION.md).
 
-## Ecosystem
-
-Claude SEO is part of a family of Claude Code skills that interoperate cleanly:
-
-| Skill | What it does | How it connects |
-|-------|-------------|-----------------|
-| [Claude SEO](https://github.com/AgriciDaniel/claude-seo) | SEO analysis, audits, schema, GEO | Core. Analyzes sites and generates action plans. |
-| [Claude Blog](https://github.com/AgriciDaniel/claude-blog) | Blog writing, optimization, scoring | Companion. Writes content optimized by SEO findings. |
-| [Claude Banana](https://github.com/AgriciDaniel/banana-claude) | AI image generation via Gemini | Shared. Generates images for SEO assets and blog posts. |
-| [Codex SEO](https://github.com/AgriciDaniel/codex-seo) | Codex-first SEO skill suite | Port. Same SEO system adapted for Codex skills, TOML agents, deterministic runners. |
-| [AI Marketing Claude](https://github.com/zubair-trabzada/ai-marketing-claude) | Copywriting, emails, social, ads, funnels, CRO | Community. Post-audit marketing action from SEO findings. |
-| [FLOW](https://github.com/AgriciDaniel/flow) | Evidence-led SEO framework (41 AI prompts, CC BY 4.0) | Knowledge base. Powers `seo-flow` prompts. |
-
-**Workflow example:**
-
-1. `/seo audit https://example.com`: identify content gaps and technical issues
-2. `/seo backlinks https://example.com`: analyze link profile and competitor gaps
-3. `/seo geo https://example.com/blog/post`: score AI-citation readiness
-4. `/blog write "target keyword"`: create SEO-optimized blog post (Claude Blog)
-5. `/seo image-gen hero "blog topic"`: generate hero image (Banana extension)
-
 ## Documentation
 
 - [Installation Guide](docs/INSTALLATION.md)
@@ -426,10 +358,6 @@ Claude SEO is part of a family of Claude Code skills that interoperate cleanly:
 ### What is Claude SEO?
 
 Claude SEO is an open-source SEO analysis plugin for Claude Code. It runs 26 sub-skills and 19 specialist agents in parallel across technical SEO, content quality, Schema.org markup, AI search optimization, local SEO, e-commerce, and international SEO. Audits produce a prioritized action plan where each recommendation carries the first-principle observation it rests on, its dependency relationship to other recommendations, a "how would we know this failed?" check, and a leading indicator. The plugin is MIT-licensed, ships zero proprietary tracking, and works without third-party API enrichment; audits still contact the target URLs you analyze. Aligned with [Google's AI Optimization Guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) and the September 2025 Quality Rater Guidelines.
-
-### How is Claude SEO different from Screaming Frog or commercial site-audit suites?
-
-Different surface area, different tradeoffs. **Screaming Frog** crawls deeper and faster at the link-graph level; it is purpose-built as a crawler and Claude SEO does not attempt to replace it. **Commercial site-audit suites** bring proprietary backlink indexes and link intelligence; Claude SEO can pull that kind of data in through optional extensions rather than competing. Where Claude SEO leads: conversational LLM-native workflow, recommendation falsifiability (every finding carries an explicit failure-mode check), open-source MIT licensing with zero per-domain pricing, AI search optimization aligned with Google's primary-source guidance, and primary-source schema-deprecation tracking. Use those tools for what they are best at; use Claude SEO when you want LLM-driven synthesis, conversational iteration, and AI-search-first audits in the same environment as your other Claude Code workflows.
 
 ### Does Claude SEO work on single-page applications (Next.js, React, Vue)?
 
@@ -457,12 +385,7 @@ Contributions welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before sub
 
 ---
 
-## Author
+## Attribution
 
-Built by **[Agrici Daniel](https://agricidaniel.com/about)**, AI Workflow Architect. Single maintainer, open to community contributions via the [Pro Skool community](https://www.skool.com/ai-marketing-hub-pro). Background in marketing automation, AI-assisted content workflows, and open-source tooling for Claude Code.
-
-- [Blog](https://agricidaniel.com/blog): deep dives on AI marketing automation
-- [AI Marketing Hub (free)](https://www.skool.com/ai-marketing-hub): open community
-- [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro): Pro community, early access to this skill
-- [YouTube](https://www.youtube.com/@AgriciDaniel): tutorials and demos
-- [GitHub](https://github.com/AgriciDaniel): all open-source tools
+Originally created by [AgriciDaniel](https://github.com/AgriciDaniel).
+See [LICENSE](LICENSE) and [CONTRIBUTORS.md](CONTRIBUTORS.md) for license and contributor credits.

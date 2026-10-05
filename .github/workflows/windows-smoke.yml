@@ -19,7 +19,7 @@ on:
       target_ref:
         description: "Released tag or main branch to install"
         required: true
-        default: "v2.4.2"
+        default: "main"
         type: string
 
 permissions:
@@ -41,7 +41,7 @@ jobs:
           # Manual runs install a released tag or main. Pull requests from this
           # repository install their own head branch, so the installer under
           # test is the one in the PR rather than the previous release.
-          TARGET_REF: ${{ inputs.target_ref || github.head_ref || 'v2.4.2' }}
+          TARGET_REF: ${{ inputs.target_ref || github.head_ref || 'main' }}
           EVENT_NAME: ${{ github.event_name }}
         shell: bash
         run: |
@@ -51,7 +51,7 @@ jobs:
             exit 1
           fi
           git ls-remote --exit-code --refs \
-            https://github.com/AgriciDaniel/claude-seo.git \
+            https://github.com/sgiannopoulos/claude-seo.git \
             "refs/heads/$TARGET_REF" "refs/tags/$TARGET_REF" >/dev/null
           printf 'ref=%s\n' "$TARGET_REF" >> "$GITHUB_OUTPUT"
 

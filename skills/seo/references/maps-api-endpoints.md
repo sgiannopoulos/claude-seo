@@ -13,7 +13,7 @@
 - HTTP Basic Auth (login:password)
 - Rate limit: **2,000 API calls/minute** across all endpoints
 - Each POST supports up to **100 tasks** in a single request
-- Minimum deposit: $50. $1 free trial credit. Credits never expire.
+- Check the provider's current pricing and account requirements before making paid requests.
 
 ---
 

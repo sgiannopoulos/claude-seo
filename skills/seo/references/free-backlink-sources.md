@@ -90,16 +90,18 @@ a report (`status: FAIL`) that carries a number in either case. See the
 - **Polite crawling:** 1-second delay between requests to same domain
 - **Best for:** Checking if known backlinks still exist, monitoring link health
 
-## When to Recommend DataForSEO Upgrade
+## Coverage Limits
 
-Suggest the paid DataForSEO extension when:
-- User needs **toxic link detection** beyond Moz's basic Spam Score
-- User needs **competitor gap analysis** at scale or against an unregistered
-  domain (Bing comparison is limited to properties accessible to the account)
-- User needs **link velocity trends** (new/lost links over time)
-- User needs **real-time data** (free sources update monthly at best)
-- User manages **multiple client sites** (free tier limits are per-account)
-- User needs **disavow file generation** with confidence scoring
+State which requested measurements the configured sources can support:
+- Moz's Spam Score provides a limited signal for **toxic link detection**.
+- Bing **competitor comparisons** are limited to properties accessible to the account.
+- Point-in-time snapshots do not establish **link velocity trends**.
+- Update frequency limits claims about **current data**.
+- Per-account quotas limit coverage across **multiple client sites**.
+- **Disavow recommendations** require evidence about each link and its risk.
+
+Return the available evidence and identify missing inputs. Use optional paid
+integrations when the user requests them and the required access is configured.
 
 ## Data Quality Reality Check
 

@@ -22,7 +22,7 @@ main() {
     # Check prerequisites
     if [ ! -d "${SEO_SKILL_DIR}" ]; then
         echo "x Claude SEO is not installed."
-        echo "  Install it first: curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/install.sh | bash"
+        echo "  Install it first: curl -fsSL https://raw.githubusercontent.com/sgiannopoulos/claude-seo/main/install.sh | bash"
         exit 1
     fi
     echo "v Claude SEO detected"

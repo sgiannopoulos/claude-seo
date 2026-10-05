@@ -4,7 +4,7 @@ Live SEO data via the [DataForSEO MCP server](https://github.com/dataforseo/mcp-
 
 ## Prerequisites
 
-- [Claude SEO](https://github.com/AgriciDaniel/claude-seo) installed
+- [Claude SEO](https://github.com/sgiannopoulos/claude-seo) installed
 - Node.js 20+
 - [DataForSEO account](https://app.dataforseo.com/register) with API credentials
 
@@ -13,7 +13,7 @@ Live SEO data via the [DataForSEO MCP server](https://github.com/dataforseo/mcp-
 ### Unix/macOS/Linux
 
 ```bash
-git clone https://github.com/AgriciDaniel/claude-seo.git
+git clone https://github.com/sgiannopoulos/claude-seo.git
 cd claude-seo
 ./extensions/dataforseo/install.sh
 ```
@@ -21,7 +21,7 @@ cd claude-seo
 ### Windows
 
 ```powershell
-git clone https://github.com/AgriciDaniel/claude-seo.git
+git clone https://github.com/sgiannopoulos/claude-seo.git
 cd claude-seo
 .\extensions\dataforseo\install.ps1
 ```
@@ -113,7 +113,7 @@ DataForSEO charges per API call. Credit costs vary by endpoint:
 - **On-page** analysis: ~0.01-0.05 per page
 - **AI optimization**: ~0.05 per request
 
-New accounts include a free trial balance. See [DataForSEO pricing](https://dataforseo.com/pricing) for current rates.
+See [DataForSEO pricing](https://dataforseo.com/pricing) for current rates.
 
 ## Field Filtering
 
@@ -167,4 +167,4 @@ This removes the skill, agent, field config, and MCP server entry from ~/.claude
 
 - [DataForSEO API Docs](https://docs.dataforseo.com/)
 - [DataForSEO MCP Server](https://github.com/dataforseo/mcp-server-typescript)
-- [Claude SEO](https://github.com/AgriciDaniel/claude-seo)
+- [Claude SEO](https://github.com/sgiannopoulos/claude-seo)

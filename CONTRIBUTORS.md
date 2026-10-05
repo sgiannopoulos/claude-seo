@@ -2,9 +2,7 @@
 
 Claude SEO is created and maintained by [@AgriciDaniel](https://github.com/AgriciDaniel).
 
-This project thrives thanks to community contributions from the
-[AI Marketing Hub](https://www.skool.com/ai-marketing-hub) Pro Hub Challenge
-and open-source pull requests.
+This project includes community extension submissions and open-source pull requests.
 
 ## Pro Hub Challenge (v1.9.0)
 
@@ -120,7 +118,3 @@ Responsible disclosures incorporated into v2.2.0. Thank you for reporting privat
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting pull requests,
 creating extensions, and participating in future challenges.
-
-Join the community:
-- Free: https://www.skool.com/ai-marketing-hub
-- Pro: https://www.skool.com/ai-marketing-hub-pro
